@@ -12,10 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var memes = [Meme]()
+    var testMemes = [UIImage]()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        for i in 1...5 {
+            testMemes.append(UIImage(named: "pic\(i).jpg")!)
+        }
+        
         return true
     }
 
