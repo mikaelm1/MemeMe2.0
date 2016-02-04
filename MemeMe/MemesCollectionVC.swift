@@ -48,8 +48,6 @@ class MemesCollectionVC: UICollectionViewController {
     func setLayout() {
         let space: CGFloat = 3.0
         let frameSize = self.view.frame.size
-        print("Width \(frameSize.width)")
-        print("Height \(frameSize.height)")
         let dimension = frameSize.width > frameSize.height ? (frameSize.width - 5 * space) / 4.0 : (frameSize.height - 2 * space) / 4.0
         
         flowLayout.minimumInteritemSpacing = space
@@ -60,13 +58,10 @@ class MemesCollectionVC: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Memes in collection view \(memes.count)")
         return memes.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        print("In collection cell")
-        print("Memes length = \(memes.count)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
         cell.memeImageView.image = meme.memedImage

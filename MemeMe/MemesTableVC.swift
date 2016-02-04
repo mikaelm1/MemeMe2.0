@@ -14,10 +14,6 @@ class MemesTableVC: UITableViewController {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
     
-    var testMemes: [UIImage] {
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).testMemes
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorInset.bottom = 100
