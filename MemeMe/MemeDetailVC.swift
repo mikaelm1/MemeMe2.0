@@ -12,12 +12,13 @@ class MemeDetailVC: UIViewController {
 
     @IBOutlet weak var detailImage: UIImageView!
     
-    var meme: Meme?
+    var meme: Meme!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true
         detailImage.image = meme?.memedImage
+        navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "editImage"), animated: true)
+        self.title = "Detail"
 
     }
     
@@ -27,7 +28,19 @@ class MemeDetailVC: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBarHidden = false
+    }
+    
+    override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
+        if identifier == "editMeme" {
+            let editorVC = storyboard?.instantiateViewControllerWithIdentifier("EditorVC") as! MemeEditorVC
+            editorVC.chosenImage.image = meme?.memedImage
+        }
+    }
+    
+    func editImage() {
+        let editorVC = storyboard?.instantiateViewControllerWithIdentifier("EditorVC") as! MemeEditorVC
+        editorVC.meme = meme
+        navigationController?.pushViewController(editorVC, animated: true)
     }
     
 

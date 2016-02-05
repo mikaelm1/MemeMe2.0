@@ -54,7 +54,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7RU-uH-va9" id="foI-1h-DB6">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JRl-KU-JsA">
@@ -140,7 +140,7 @@
                                     <constraint firstAttribute="height" constant="60" id="QeD-fN-h1A"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="Qsk-ju-zVv">
+                                    <navigationItem title="Editor" id="Qsk-ju-zVv">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="aaX-k8-gLB">
                                             <connections>
                                                 <action selector="shareButtonPressed:" destination="6Ib-x6-nk6" id="1HE-jM-A3r"/>
@@ -240,15 +240,12 @@
                                 <rect key="frame" x="20" y="116" width="560" height="366"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNq-aE-kad">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ah3-UN-fZH"/>
+                                </constraints>
                                 <items>
-                                    <navigationItem title="Detail" id="ach-3Q-zuS">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="nbu-NA-6pS">
-                                            <connections>
-                                                <segue destination="6Ib-x6-nk6" kind="show" id="Mvn-v0-EWZ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Detail" id="ach-3Q-zuS"/>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -336,6 +333,6 @@
         <image name="table_30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mvn-v0-EWZ"/>
+        <segue reference="y3T-we-l2R"/>
     </inferredMetricsTieBreakers>
 </document>

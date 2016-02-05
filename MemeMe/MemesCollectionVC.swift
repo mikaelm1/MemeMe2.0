@@ -77,6 +77,10 @@ class MemesCollectionVC: UICollectionViewController {
         self.navigationController?.pushViewController(detailVC, animated: true)
         
     }
+    
+    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true 
+    }
 
 
 

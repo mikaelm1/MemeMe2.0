@@ -18,6 +18,8 @@ class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
+    var meme: Meme?
+    
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
@@ -29,6 +31,7 @@ class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         super.viewDidLoad()
         setupTextFields()
         shareButton.enabled = false
+        self.title = "Editor"
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,12 +40,22 @@ class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         subscribeToKeyboardNotifications()
         self.navigationController?.navigationBarHidden = true
         self.tabBarController?.tabBar.hidden = true
+        
+        checkForMeme()
     }
     
     override func viewWillDisappear(animated: Bool) {
         unsubscribeFromKeyboardNotifications()
         self.navigationController?.navigationBarHidden = false
         self.tabBarController?.tabBar.hidden = false
+    }
+    
+    func checkForMeme() {
+        if meme != nil {
+            chosenImage.image = meme?.originalImage
+            bottomTextField.text = meme?.bottomText
+            topTextField.text = meme?.topText
+        }
     }
     
     // MARK: Keyboard methods
@@ -120,7 +133,6 @@ class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: chosenImage.image!, memedImage: memedImage)
         
-        
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
@@ -157,7 +169,8 @@ class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         presentViewController(controller, animated: true, completion: nil)
         
         controller.completionWithItemsHandler = { (type, completed, items, error) in
-            if completed && type == UIActivityTypeSaveToCameraRoll {
+            if completed {
+                print("Saving image")
                 self.saveImage()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }

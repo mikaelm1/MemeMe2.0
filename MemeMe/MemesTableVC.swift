@@ -53,6 +53,14 @@ class MemesTableVC: UITableViewController {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.memes.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
     override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
         if identifier == "editorView" {
             goToEditor()
