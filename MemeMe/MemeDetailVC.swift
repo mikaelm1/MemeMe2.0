@@ -18,7 +18,7 @@ class MemeDetailVC: UIViewController {
         super.viewDidLoad()
         detailImage.image = meme?.memedImage
         navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "editImage"), animated: true)
-        self.title = "Detail"
+        title = "Detail"
 
     }
     

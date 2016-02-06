@@ -42,7 +42,7 @@ class MemesCollectionVC: UICollectionViewController {
     
     func goToEditor() {
         let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("EditorVC")
-        self.navigationController?.pushViewController(editorVC!, animated: true)
+        navigationController?.pushViewController(editorVC!, animated: true)
     }
     
     func setLayout() {
@@ -65,8 +65,6 @@ class MemesCollectionVC: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
         cell.memeImageView.image = meme.memedImage
-
-
         return cell
     }
 
@@ -74,8 +72,7 @@ class MemesCollectionVC: UICollectionViewController {
         
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailVC") as! MemeDetailVC
         detailVC.meme = memes[indexPath.row]
-        self.navigationController?.pushViewController(detailVC, animated: true)
-        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {

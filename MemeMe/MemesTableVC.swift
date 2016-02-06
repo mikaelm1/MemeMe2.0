@@ -50,7 +50,7 @@ class MemesTableVC: UITableViewController {
         
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailVC") as! MemeDetailVC
         detailVC.meme = memes[indexPath.row]
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -69,7 +69,7 @@ class MemesTableVC: UITableViewController {
     
     func goToEditor() {
         let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("EditorVC")
-        self.navigationController?.pushViewController(editorVC!, animated: true)
+        navigationController?.pushViewController(editorVC!, animated: true)
     }
 
 
